@@ -19,6 +19,7 @@ public class OpAritmeticas {
      */
     public static void main(String[] args) {
         OpAritmeticaVista miVentana = new OpAritmeticaVista();
+        miVentana.setVisible(true);
     }
     
 }

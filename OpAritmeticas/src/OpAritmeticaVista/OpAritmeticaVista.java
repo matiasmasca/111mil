@@ -50,12 +50,6 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
 
         jLabel2.setText("N2:");
 
-        txtOperando2.setText("jTextField2");
-
-        txtOperacion.setText("jTextField3");
-
-        txtOperando1.setText("jTextField1");
-
         jLabel4.setText("Operacion");
 
         jButton1.setText("Calcular");
@@ -75,17 +69,17 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
-                .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOperando1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOperando2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtOperando1, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(txtOperando2))
+                        .addContainerGap(61, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtOperacion)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(23, 23, 23))))
         );
@@ -115,7 +109,7 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
 
         jLabel3.setText("Resultado");
 
-        txtResultado.setText("jTextField4");
+        txtResultado.setEditable(false);
 
         jButton2.setText("Limpiar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -132,10 +126,10 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(184, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -160,7 +154,7 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +170,10 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        txtOperando1.setText("");
+        txtOperando2.setText("");
+        txtOperacion.setText("");
+        txtResultado.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -196,9 +193,38 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
         auxOperando2 = Integer.parseInt(strOperando2);
         
         //Realizo el calculo según la opcion ingresada
+        strResultado = "No sé que hacer";
+         
         if(strOperacion.equals("+")){
             auxResultado = auxOperando1 + auxOperando2;
+            strResultado = String.valueOf(auxResultado);
         }
+
+        switch (strOperacion) {
+            case "+":
+                auxResultado = auxOperando1 + auxOperando2;
+                strResultado = String.valueOf(auxResultado);
+                break;            
+            case "-":
+                auxResultado = auxOperando1 - auxOperando2;
+                strResultado = String.valueOf(auxResultado);
+                break;
+            case "*":
+                auxResultado = auxOperando1 * auxOperando2;
+                strResultado = String.valueOf(auxResultado);
+                break;
+            case "/":
+                auxResultado = auxOperando1 / auxOperando2;
+                strResultado = String.valueOf(auxResultado);
+                break;        
+            default:
+                strResultado = String.valueOf("No reconozco esa operación");
+                break;
+        }
+       
+        
+        //Publicar resultados
+        txtResultado.setText(strResultado);
     }//GEN-LAST:event_jButton1ActionPerformed
 
  
