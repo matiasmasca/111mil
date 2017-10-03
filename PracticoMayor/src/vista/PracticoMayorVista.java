@@ -5,7 +5,7 @@
  */
 package vista;
 
-
+import controlador.PracticoMayorControlador;
 
 /**
  *
@@ -166,11 +166,23 @@ public class PracticoMayorVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
+        //Esto se ejecuta cuando se presiona el botón Detectar.
+        
+        //Tomamos lo que esta en los TextFields y lo guardamos en una variable de tipo cadena (String)
+        // luego lo transforamos a numero entero.
+        String numero = jTextField1.getText();
+        int num_aux1 = Integer.parseInt(numero);
       
+        String numero2 = jTextField2.getText();
+        int num_aux2 = Integer.parseInt(numero2);
+
+        // Creo un objecto 'miControlador' de la clase PracticoMayorControlador,
+        // que es la que tiene los métodos que quiero ejectutar despues.
+        PracticoMayorControlador miControlador = new PracticoMayorControlador();
         
-        
-       
+        int resultadoEvalucion = miControlador.mayor(num_aux1, num_aux2);
+        String auxMayor = String.valueOf(resultadoEvalucion);
+        jLabel3.setText(auxMayor);
         
         
         
