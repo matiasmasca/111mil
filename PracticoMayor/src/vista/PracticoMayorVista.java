@@ -50,11 +50,14 @@ public class PracticoMayorVista extends javax.swing.JFrame {
 
         jLabel2.setText("Segundo valor:");
 
+        jTextField1.setToolTipText("Ingrese un número");
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jTextField1MouseExited(evt);
             }
         });
+
+        jTextField2.setToolTipText("Ingrese un número");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -183,7 +186,7 @@ public class PracticoMayorVista extends javax.swing.JFrame {
         int resultadoEvalucion = miControlador.mayor(num_aux1, num_aux2);
         String auxMayor = String.valueOf(resultadoEvalucion);
         jLabel3.setText(auxMayor);
-        
+        jLabel3.setVisible(true);
         
         
         
