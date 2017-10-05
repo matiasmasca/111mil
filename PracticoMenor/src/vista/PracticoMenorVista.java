@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.PracticoMenorControlador;
+
 /**
  *
  * @author Monica
@@ -56,6 +58,10 @@ public class PracticoMenorVista extends javax.swing.JFrame {
 
         jLabel2.setText("Segundo valor:");
 
+        jTextField1.setText("1");
+
+        jTextField2.setText("2");
+
         jLabel4.setText("Tercer valor:");
 
         jLabel5.setText("Cuarto valor:");
@@ -63,6 +69,14 @@ public class PracticoMenorVista extends javax.swing.JFrame {
         jLabel6.setText("Quinto valor");
 
         jLabel7.setText("Sexto valor");
+
+        jTextField3.setText("3");
+
+        jTextField4.setText("4");
+
+        jTextField5.setText("5");
+
+        jTextField6.setText("6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,6 +140,11 @@ public class PracticoMenorVista extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 51));
         jButton1.setText("Detectar...!!!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("El menor es:"));
@@ -193,6 +212,35 @@ public class PracticoMenorVista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Leer los datos de pantalla.
+        String num1 = jTextField1.getText();
+        String num2 = jTextField2.getText();
+        String num3 = jTextField3.getText();
+        String num4 = jTextField4.getText();
+        String num5 = jTextField5.getText();
+        String num6 = jTextField6.getText();
+        
+        //Convertir a variables de trabajo en enteros lo que obtuve de la pantalla.
+        int numero1 = Integer.parseInt(num1);
+        int numero2 = Integer.parseInt(num2);
+        int numero3 = Integer.parseInt(num3);
+        int numero4 = Integer.parseInt(num4);
+        int numero5 = Integer.parseInt(num5);
+        int numero6 = Integer.parseInt(num6);
+        
+        //Crear una instancia del controlador y llamarla.
+        PracticoMenorControlador miControlador = new PracticoMenorControlador();
+        
+        int resultado = miControlador.menor(numero1, numero2, numero3, numero4, numero5, numero6);
+        
+        String resultadoInterfaz = String.valueOf(resultado);
+        
+        //Asigno a la etiqueta de la interfaz
+        jLabel3.setText(resultadoInterfaz);
+        jLabel3.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
