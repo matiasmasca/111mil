@@ -248,14 +248,19 @@ public class PracticoMenorMayorVista extends javax.swing.JFrame {
         String numero6 = jTextField6.getText();
         int num6 = Integer.parseInt(numero6);
         
+        //Creo una instancia de la clase controlador.
         PracticoMenorMayorControlador miControlador = new PracticoMenorMayorControlador();
         
+        //Llamo al método mayor de la instanacia, guardo el resultado en un variable y luego
+        // llamao al método menor de la instancia.
         int respuestaMayor = miControlador.mayor(num1, num2, num3, num4, num5, num6);
         int respuestaMenor = miControlador.menor(num1, num2, num3, num4, num5, num6);
         
+        //transformo los datos para poder mostrarlos en la interfaz
         String interfazRespuestaMenor = String.valueOf(respuestaMenor);
         String interfazRespuestaMayor = String.valueOf(respuestaMayor);
         
+        //Asigno el valor al componente de la interfaz
         jLabel3.setText(interfazRespuestaMenor);
         jLabel3.setVisible(true);
         
