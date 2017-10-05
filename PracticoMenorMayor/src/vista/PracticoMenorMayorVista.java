@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.PracticoMenorMayorControlador;
+
 /**
  *
  * @author Monica
@@ -128,6 +130,11 @@ public class PracticoMenorMayorVista extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 51));
         jButton1.setText("Detectar...!!!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("El menor es:"));
@@ -220,6 +227,41 @@ public class PracticoMenorMayorVista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       //Leo y asigno los valores.
+        String numero1 = jTextField1.getText();
+        int num1 = Integer.parseInt(numero1);
+
+        String numero2 = jTextField2.getText();
+        int num2 = Integer.parseInt(numero2);
+        
+        String numero3 = jTextField3.getText();
+        int num3 = Integer.parseInt(numero3);
+        
+        String numero4 = jTextField4.getText();
+        int num4 = Integer.parseInt(numero4);
+        
+        String numero5 = jTextField5.getText();
+        int num5 = Integer.parseInt(numero5);
+        
+        String numero6 = jTextField6.getText();
+        int num6 = Integer.parseInt(numero6);
+        
+        PracticoMenorMayorControlador miControlador = new PracticoMenorMayorControlador();
+        
+        int respuestaMayor = miControlador.mayor(num1, num2, num3, num4, num5, num6);
+        int respuestaMenor = miControlador.menor(num1, num2, num3, num4, num5, num6);
+        
+        String interfazRespuestaMenor = String.valueOf(respuestaMenor);
+        String interfazRespuestaMayor = String.valueOf(respuestaMayor);
+        
+        jLabel3.setText(interfazRespuestaMenor);
+        jLabel3.setVisible(true);
+        
+        jLabel8.setText(interfazRespuestaMayor);
+        jLabel8.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
