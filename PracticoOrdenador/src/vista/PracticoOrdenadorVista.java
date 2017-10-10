@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package vista;
+import controlador.PracticoOrdenadorControlador;
 
 /**
  *
@@ -56,6 +57,10 @@ public class PracticoOrdenadorVista extends javax.swing.JFrame {
 
         jLabel2.setText("Segundo valor:");
 
+        jTextField1.setText("3");
+
+        jTextField2.setText("1");
+
         jLabel4.setText("Tercer valor:");
 
         jLabel5.setText("Cuarto valor:");
@@ -63,6 +68,15 @@ public class PracticoOrdenadorVista extends javax.swing.JFrame {
         jLabel6.setText("Quinto valor");
 
         jLabel7.setText("Sexto valor");
+
+        jTextField3.setText("2");
+
+        jTextField4.setText("4");
+
+        jTextField5.setText("6");
+        jTextField5.setToolTipText("");
+
+        jTextField6.setText("5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,6 +140,11 @@ public class PracticoOrdenadorVista extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 51));
         jButton1.setText("Detectar...!!!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Los números ordenados son:"));
@@ -193,6 +212,45 @@ public class PracticoOrdenadorVista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Leo y asigno los valores.
+        String numero1 = jTextField1.getText();
+        int num1 = Integer.parseInt(numero1);
+
+        String numero2 = jTextField2.getText();
+        int num2 = Integer.parseInt(numero2);
+        
+        String numero3 = jTextField3.getText();
+        int num3 = Integer.parseInt(numero3);
+        
+        String numero4 = jTextField4.getText();
+        int num4 = Integer.parseInt(numero4);
+        
+        String numero5 = jTextField5.getText();
+        int num5 = Integer.parseInt(numero5);
+        
+        String numero6 = jTextField6.getText();
+        int num6 = Integer.parseInt(numero6);
+        
+        //Creo una instancia de la clase controlador.
+        PracticoOrdenadorControlador miControlador = new PracticoOrdenadorControlador();
+        
+        //Llamo al método mayor de la instanacia, guardo el resultado en un variable y luego
+        // llamao al método menor de la instancia.
+        int[] respuestaOrden = miControlador.ordenar(num1, num2, num3, num4, num5, num6);
+        
+        //transformo los datos para poder mostrarlos en la interfaz
+        String interfazRespuestaMenor = "";
+        
+        for (int i = 0; i < 6; i++) {
+            interfazRespuestaMenor += String.valueOf(respuestaOrden[i]) + "; ";
+        }
+        
+        //Asigno el valor al componente de la interfaz
+        jLabel3.setText(interfazRespuestaMenor);
+        jLabel3.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
