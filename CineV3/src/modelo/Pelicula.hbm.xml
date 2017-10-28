@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/10/2017 12:40:50 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Pelicula" table="pelicula" catalog="dbcine2" optimistic-lock="version">
+        <id name="idPelicula" type="java.lang.Integer">
+            <column name="id_pelicula" />
+            <generator class="identity" />
+        </id>
+        <property name="anioEstreno" type="string">
+            <column name="anio_estreno" length="20" />
+        </property>
+        <property name="disponible" type="java.lang.Byte">
+            <column name="disponible" />
+        </property>
+        <property name="duracion" type="string">
+            <column name="duracion" length="20" />
+        </property>
+        <property name="fechaIngreso" type="string">
+            <column name="fecha_ingreso" length="20" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <property name="tituloOriginal" type="string">
+            <column name="titulo_original" length="50" />
+        </property>
+        <property name="idcalificacion" type="java.lang.Integer">
+            <column name="idcalificacion" />
+        </property>
+        <property name="idgenero" type="java.lang.Integer">
+            <column name="idgenero" />
+        </property>
+        <property name="idpaisdeorigen" type="java.lang.Integer">
+            <column name="idpaisdeorigen" />
+        </property>
+    </class>
+</hibernate-mapping>
