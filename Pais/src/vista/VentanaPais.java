@@ -5,8 +5,10 @@
  */
 package vista;
 
+import controlador.CargarPais;
 import controlador.HibernateUtil;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Pais;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -56,7 +58,7 @@ public class VentanaPais extends javax.swing.JFrame {
             Pais itemPais = (Pais) item;
             
             //llamamos al componente ComboBox y le agrego un element
-            
+        
             jComboBox1.addItem(itemPais.getIdPais()+". "+itemPais.getNombre()+" ("+itemPais.getIdioma()+")");
         }
         
@@ -82,13 +84,11 @@ public class VentanaPais extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setText("Paises en db:");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar país"));
 
-        jButton1.setText("Agregar Pais");
+        jButton1.setText("Agregar País");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -99,9 +99,14 @@ public class VentanaPais extends javax.swing.JFrame {
 
         jLabel3.setText("Idioma:");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setToolTipText("ingrese el nombre del pais");
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setToolTipText("ingrese el idioma que se habla oficialmente en ese país");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,8 +173,26 @@ public class VentanaPais extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //Leer los datos de la pantalla y mandarlos al controlador.
+        String pais = jTextField1.getText().toUpperCase();
+        String idioma = jTextField2.getText();
+        
+        //Creo un objeto de mi controlador
+        CargarPais miControlador = new CargarPais();
+        
+        //llamar al metodo Nuevo del controlador, para que haga el trabajo.
+        miControlador.nuevo(pais, idioma);
+        
+        JOptionPane.showMessageDialog(null, "El país " + pais + " se creo con éxito.");
+        
+         //llamar al metodo que ejecuta la consulta y carga los datos
+        runQuery();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
  
 
