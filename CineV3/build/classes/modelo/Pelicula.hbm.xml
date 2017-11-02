@@ -1,39 +1,39 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27/10/2017 12:40:50 by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2017 22:08:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Pelicula" table="pelicula" catalog="dbcine2" optimistic-lock="version">
+    <class name="modelo.Pelicula" table="pelicula" catalog="dbdatos" optimistic-lock="version">
         <id name="idPelicula" type="java.lang.Integer">
-            <column name="id_pelicula" />
+            <column name="idPelicula" />
             <generator class="identity" />
         </id>
         <property name="anioEstreno" type="string">
-            <column name="anio_estreno" length="20" />
+            <column name="anioEstreno" length="4" />
         </property>
-        <property name="disponible" type="java.lang.Byte">
+        <property name="disponible" type="java.lang.Boolean">
             <column name="disponible" />
         </property>
         <property name="duracion" type="string">
-            <column name="duracion" length="20" />
+            <column name="duracion" />
         </property>
         <property name="fechaIngreso" type="string">
-            <column name="fecha_ingreso" length="20" />
+            <column name="fechaIngreso" />
         </property>
         <property name="nombre" type="string">
-            <column name="nombre" length="100" />
+            <column name="nombre" />
         </property>
         <property name="tituloOriginal" type="string">
-            <column name="titulo_original" length="50" />
+            <column name="tituloOriginal" />
         </property>
-        <property name="idcalificacion" type="java.lang.Integer">
-            <column name="idcalificacion" />
+        <property name="idCalificacion" type="java.lang.Integer">
+            <column name="idCalificacion" />
         </property>
-        <property name="idgenero" type="java.lang.Integer">
-            <column name="idgenero" />
+        <property name="idGenero" type="java.lang.Integer">
+            <column name="idGenero" />
         </property>
-        <property name="idpaisdeorigen" type="java.lang.Integer">
-            <column name="idpaisdeorigen" />
+        <property name="idPais" type="java.lang.Integer">
+            <column name="idPais" />
         </property>
     </class>
 </hibernate-mapping>

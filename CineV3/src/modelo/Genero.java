@@ -1,5 +1,5 @@
 package modelo;
-// Generated 27/10/2017 12:40:45 by Hibernate Tools 4.3.1
+// Generated 30/10/2017 22:08:51 by Hibernate Tools 4.3.1
 
 
 
@@ -9,29 +9,21 @@ package modelo;
 public class Genero  implements java.io.Serializable {
 
 
-     private Integer idGenero;
-     private String nombre;
+     private GeneroId id;
 
     public Genero() {
     }
 
-    public Genero(String nombre) {
-       this.nombre = nombre;
+    public Genero(GeneroId id) {
+       this.id = id;
     }
    
-    public Integer getIdGenero() {
-        return this.idGenero;
+    public GeneroId getId() {
+        return this.id;
     }
     
-    public void setIdGenero(Integer idGenero) {
-        this.idGenero = idGenero;
-    }
-    public String getNombre() {
-        return this.nombre;
-    }
-    
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId(GeneroId id) {
+        this.id = id;
     }
 
 

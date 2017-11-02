@@ -10,40 +10,34 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import modelo.Genero;
 import modelo.Calificacion;
-import modelo.PaisDeOrigen;
+import modelo.Pais;
 
 
 public class Peliculas extends javax.swing.JFrame {
-    
+    //Definimos las consultas que vamos a realizar para cargar los combos de opciones de la pantalla.
     private static String QUERY1="from Genero";
     private static String QUERY2="from Calificacion";
-    private static String QUERY3="from PaisDeOrigen";
+    private static String QUERY3="from Pais";
     
     public Peliculas() {
         initComponents();
         
+        //ejecutamos las consultas
         runQuery1();
         runQuery2();
-        runQuery3();
-        
-        
-        
-        
-        
+        runQuery3();   
     }
     
     private void runQuery1() {
-    executeHQLQuery(QUERY1);
+        executeHQLQuery(QUERY1);
    }
-    
     
    private void runQuery2() {
-    executeHQLQuery2(QUERY2);
+       executeHQLQuery2(QUERY2);
    }
    
-   
    private void runQuery3() {
-    executeHQLQuery3(QUERY3);
+       executeHQLQuery3(QUERY3);
    }
     
     @SuppressWarnings("unchecked")
@@ -108,15 +102,15 @@ public class Peliculas extends javax.swing.JFrame {
 
         jLabel2.setText("Género");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "error lectura base de datos" }));
 
         jLabel3.setText("Calificación");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "error lectura base de datos" }));
 
         jLabel4.setText("País de Origen");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "error lectura base de datos" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -298,54 +292,45 @@ public class Peliculas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /* Boton Agregar Pelicula*/
         
+        //Leer el nombre del campo de texto y asignarlo a una variable
         String nombre = jTextField1.getText();
-                
+        
+        //Leer que item tengo seleccionado en el combobox y asignarlo a una variable        
         String genero = (String) jComboBox1.getSelectedItem();
         String[] Idgenero = genero.split("--");
         int  id_genero = Integer.parseInt(Idgenero[0]);
         System.out.println(id_genero);
         
-        
+        //Leer que item tengo seleccionado en el combobox y asignarlo a una variable 
         String calificacion = (String) jComboBox2.getSelectedItem();
         String[] Idcalificacion = calificacion.split("--");
         int  id_calificacion = Integer.parseInt(Idcalificacion[0]);
         
+        //Leer que item tengo seleccionado en el combobox y asignarlo a una variable 
         String paisOrigen = (String) jComboBox3.getSelectedItem();
         String[] IdpaisOrigen = paisOrigen.split("--");
         int  id_paisOrigen = Integer.parseInt(IdpaisOrigen[0]);
         
+        //Leer que item tengo seleccionado en el combobox y asignarlo a una variable 
         String duracion = jTextField2.getText();
         String tituloOriginal = jTextField3.getText();
         String aniEstreno = jTextField4.getText();
         
         byte disponible=0;
         
-        if (jRadioButton1.isSelected()) {
-            
+        if (jRadioButton1.isSelected()) {            
             disponible=1;
-            
         }
         if (jRadioButton2.isSelected()) {
-            
             disponible=0;
-            
         }
         
         Datos d = new Datos();
         d.nuevo( nombre, id_genero, id_calificacion, id_paisOrigen, duracion, tituloOriginal, aniEstreno, disponible);
         
         JOptionPane.showMessageDialog(null, "El registro: "+nombre+" a sido registrado");
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -379,27 +364,24 @@ public class Peliculas extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void executeHQLQuery(String hql) {
-        
-         try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List resultList = q.list();
-        displayResult(resultList);
-        session.getTransaction().commit();
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+            List resultList = q.list();
+            displayResult(resultList);
+            session.getTransaction().commit();
        } catch (HibernateException he) {
-        he.printStackTrace();
-        }
-        
-        
+            he.printStackTrace();
+       }
+         
     }
     
     private void displayResult(List resultList) {
-       jComboBox1.removeAllItems();
-       for(Object o : resultList) {
-        Genero  d = (Genero)o;
-        
-        jComboBox1.addItem(d.getIdGenero()+"-- "+d.getNombre());
+        jComboBox1.removeAllItems();
+        for(Object o : resultList) {
+            Genero  d = (Genero)o;
+            jComboBox1.addItem(d.getIdGenero()+"-- "+d.getNombre());
            
         
         
@@ -424,9 +406,9 @@ public class Peliculas extends javax.swing.JFrame {
         private void displayResult2(List resultList2) {
        jComboBox2.removeAllItems();
        for(Object o : resultList2) {
-        Calificacion d2 = (Calificacion)o;
+        //Calificacion d2 = (Calificacion)o;
         
-        jComboBox2.addItem(d2.getIdCalificacion()+"-- "+d2.getNombre());
+        //jComboBox2.addItem(d2.getIdCalificacion()+"-- "+d2.getNombre());
            
         
         
@@ -458,9 +440,9 @@ public class Peliculas extends javax.swing.JFrame {
     private void displayResult3(List resultList3) {
        jComboBox3.removeAllItems();
        for(Object o : resultList3) {
-        PaisDeOrigen d = (PaisDeOrigen)o;
+        //PaisDeOrigen d = (PaisDeOrigen)o;
         
-        jComboBox3.addItem(d.getIdPais()+"-- "+d.getNombre());
+        //jComboBox3.addItem(d.getIdPais()+"-- "+d.getNombre());
            
         
         

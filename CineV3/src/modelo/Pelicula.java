@@ -1,5 +1,5 @@
 package modelo;
-// Generated 27/10/2017 12:40:45 by Hibernate Tools 4.3.1
+// Generated 30/10/2017 22:08:51 by Hibernate Tools 4.3.1
 
 
 
@@ -11,28 +11,28 @@ public class Pelicula  implements java.io.Serializable {
 
      private Integer idPelicula;
      private String anioEstreno;
-     private Byte disponible;
+     private Boolean disponible;
      private String duracion;
      private String fechaIngreso;
      private String nombre;
      private String tituloOriginal;
-     private Integer idcalificacion;
-     private Integer idgenero;
-     private Integer idpaisdeorigen;
+     private Integer idCalificacion;
+     private Integer idGenero;
+     private Integer idPais;
 
     public Pelicula() {
     }
 
-    public Pelicula(String anioEstreno, Byte disponible, String duracion, String fechaIngreso, String nombre, String tituloOriginal, Integer idcalificacion, Integer idgenero, Integer idpaisdeorigen) {
+    public Pelicula(String anioEstreno, Boolean disponible, String duracion, String fechaIngreso, String nombre, String tituloOriginal, Integer idCalificacion, Integer idGenero, Integer idPais) {
        this.anioEstreno = anioEstreno;
        this.disponible = disponible;
        this.duracion = duracion;
        this.fechaIngreso = fechaIngreso;
        this.nombre = nombre;
        this.tituloOriginal = tituloOriginal;
-       this.idcalificacion = idcalificacion;
-       this.idgenero = idgenero;
-       this.idpaisdeorigen = idpaisdeorigen;
+       this.idCalificacion = idCalificacion;
+       this.idGenero = idGenero;
+       this.idPais = idPais;
     }
    
     public Integer getIdPelicula() {
@@ -49,11 +49,11 @@ public class Pelicula  implements java.io.Serializable {
     public void setAnioEstreno(String anioEstreno) {
         this.anioEstreno = anioEstreno;
     }
-    public Byte getDisponible() {
+    public Boolean getDisponible() {
         return this.disponible;
     }
     
-    public void setDisponible(Byte disponible) {
+    public void setDisponible(Boolean disponible) {
         this.disponible = disponible;
     }
     public String getDuracion() {
@@ -84,26 +84,26 @@ public class Pelicula  implements java.io.Serializable {
     public void setTituloOriginal(String tituloOriginal) {
         this.tituloOriginal = tituloOriginal;
     }
-    public Integer getIdcalificacion() {
-        return this.idcalificacion;
+    public Integer getIdCalificacion() {
+        return this.idCalificacion;
     }
     
-    public void setIdcalificacion(Integer idcalificacion) {
-        this.idcalificacion = idcalificacion;
+    public void setIdCalificacion(Integer idCalificacion) {
+        this.idCalificacion = idCalificacion;
     }
-    public Integer getIdgenero() {
-        return this.idgenero;
-    }
-    
-    public void setIdgenero(Integer idgenero) {
-        this.idgenero = idgenero;
-    }
-    public Integer getIdpaisdeorigen() {
-        return this.idpaisdeorigen;
+    public Integer getIdGenero() {
+        return this.idGenero;
     }
     
-    public void setIdpaisdeorigen(Integer idpaisdeorigen) {
-        this.idpaisdeorigen = idpaisdeorigen;
+    public void setIdGenero(Integer idGenero) {
+        this.idGenero = idGenero;
+    }
+    public Integer getIdPais() {
+        return this.idPais;
+    }
+    
+    public void setIdPais(Integer idPais) {
+        this.idPais = idPais;
     }
 
 

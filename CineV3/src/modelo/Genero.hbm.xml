@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27/10/2017 12:40:50 by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2017 22:08:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Genero" table="genero" catalog="dbcine2" optimistic-lock="version">
-        <id name="idGenero" type="java.lang.Integer">
-            <column name="id_genero" />
-            <generator class="identity" />
-        </id>
-        <property name="nombre" type="string">
-            <column name="nombre" length="50" />
-        </property>
+    <class name="modelo.Genero" table="genero" catalog="dbdatos" optimistic-lock="version">
+        <composite-id name="id" class="modelo.GeneroId">
+            <key-property name="idGenero" type="int">
+                <column name="idGenero" />
+            </key-property>
+            <key-property name="nombre" type="string">
+                <column name="nombre" />
+            </key-property>
+        </composite-id>
     </class>
 </hibernate-mapping>

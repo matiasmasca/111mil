@@ -1,7 +1,7 @@
 
 package controlador;
 
-import modelo.Pelicula;
+//import modelo.Pelicula;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,7 +15,7 @@ public class Datos {
         
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
-        
+        /*
         Pelicula pelis = new Pelicula();
         
         pelis.setNombre(nombre);
@@ -37,7 +37,7 @@ public class Datos {
         session.flush();
         
         session.close();
-        
+        */
     }
     
     
