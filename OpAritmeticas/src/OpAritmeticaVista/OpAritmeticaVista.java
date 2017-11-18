@@ -5,6 +5,8 @@
  */
 package OpAritmeticaVista;
 
+import OpAritmeticaControlador.OpAritmeticaControlador;
+
 /**
  *
  * @author Matias M
@@ -183,45 +185,11 @@ public class OpAritmeticaVista extends javax.swing.JFrame {
         String strOperando2 = txtOperando2.getText();
         String strOperacion = txtOperacion.getText();
         String strResultado = new String();
-        int auxOperando1 = 0;
-        int auxOperando2 = 0;
-        int auxResultado = 0;
- 
-        
-        //Transformar datos
-        auxOperando1 = Integer.parseInt(strOperando1);
-        auxOperando2 = Integer.parseInt(strOperando2);
-        
-        //Realizo el calculo según la opcion ingresada
-        strResultado = "No sé que hacer";
-         
-        if(strOperacion.equals("+")){
-            auxResultado = auxOperando1 + auxOperando2;
-            strResultado = String.valueOf(auxResultado);
-        }
 
-        switch (strOperacion) {
-            case "+":
-                auxResultado = auxOperando1 + auxOperando2;
-                strResultado = String.valueOf(auxResultado);
-                break;            
-            case "-":
-                auxResultado = auxOperando1 - auxOperando2;
-                strResultado = String.valueOf(auxResultado);
-                break;
-            case "*":
-                auxResultado = auxOperando1 * auxOperando2;
-                strResultado = String.valueOf(auxResultado);
-                break;
-            case "/":
-                auxResultado = auxOperando1 / auxOperando2;
-                strResultado = String.valueOf(auxResultado);
-                break;        
-            default:
-                strResultado = String.valueOf("No reconozco esa operación");
-                break;
-        }
        
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        
+       strResultado = miCalculadora.calcular(strOperando1, strOperando2, strOperacion);
         
         //Publicar resultados
         txtResultado.setText(strResultado);
