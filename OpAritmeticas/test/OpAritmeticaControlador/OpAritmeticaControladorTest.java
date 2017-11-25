@@ -51,6 +51,8 @@ public class OpAritmeticaControladorTest {
     }
     */
     
+    /*Camino feliz*/
+    
     @Test
     public void testSumar(){
         OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
@@ -58,24 +60,100 @@ public class OpAritmeticaControladorTest {
         String resultadoEsperado = "3";
         
         assertEquals(resultadoEsperado, resultadoReal);
-        
     } 
 
+    @Test
+    public void testRestar(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("2", "1", "-");
+        String resultadoEsperado = "1";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    } 
+    
+    @Test
+    public void testProducto(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("2", "1", "*");
+        String resultadoEsperado = "2";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+    
+    @Test
+    public void testDivision(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("4", "2", "/");
+        String resultadoEsperado = "2";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    } 
+    
     /**
      * Test of calcular method, of class OpAritmeticaControlador.
      */
     @Test
-    public void testCalcular() {
-        System.out.println("calcular");
-        String pOperando1 = "";
-        String pOperando2 = "";
+    public void testSinOperador() {
+        System.out.println("Sin operador");
+        String pOperando1 = "0";
+        String pOperando2 = "0";
         String pOperador = "";
-        OpAritmeticaControlador instance = new OpAritmeticaControlador();
-        String expResult = "";
-        String result = instance.calcular(pOperando1, pOperando2, pOperador);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String expResult = "No reconozco esa operación";
+        String resultadoReal =  miCalculadora.calcular(pOperando1, pOperando2, pOperador);    
+
+        assertEquals(expResult, resultadoReal);
     }
     
+    /* Casos extremos */
+    @Test
+    public void testSumarCeros(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("0", "0", "+");
+        String resultadoEsperado = "0";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+    
+    @Test
+    public void testSumarNegativos(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("-1", "-1", "+");
+        String resultadoEsperado = "-2";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+    
+    @Test
+    public void testSumarOpuestos(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("-1", "1", "+");
+        String resultadoEsperado = "0";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+    
+    @Test
+    public void testProductoCero(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("2", "0", "*");
+        String resultadoEsperado = "0";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+    
+    @Test
+    public void testProductoNegativo(){
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("2", "-1", "*");
+        String resultadoEsperado = "-2";
+        
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+    @Test(expected=java.lang.ArithmeticException.class)
+    public void testDivideByZero() {
+        OpAritmeticaControlador miCalculadora = new OpAritmeticaControlador();
+        String resultadoReal =  miCalculadora.calcular("2", "0", "/");
+    }
+
 }
